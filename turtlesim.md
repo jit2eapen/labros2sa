@@ -1,0 +1,20 @@
+sudo apt update
+sudo apt install ros-jazzy-turtlesim
+ros2 run turtlesim turtlesim_node
+ros2 run turtlesim turtle_teleop_key
+sudo apt update
+sudo apt install '~nros-jazzy-rqt*'ros2 
+rqt
+ros2 run turtlesim turtle_teleop_key --ros-args --remap turtle1/cmd_vel:=turtle2/cmd_vel
+ros2 node list
+rqt_graph
+ros2 topic echo /turtle1/cmd_vel
+ros2 topic info /turtle1/cmd_ve
+ros2 interface show geometry_msgs/msg/Twist
+ros2 topic pub /turtle1/cmd_vel geometry_msgs/msg/Twist "{linear: {x: 2.0, y: 0.0, z: 0.0}, angular: {x: 0.0, y: 0.0, z: 1.8}}"
+ros2 topic pub /turtle1/cmd_vel geometry_msgs/msg/Twist "{linear: {x: 2.0, y: 0.0, z: 0.0}, angular: {x: 0.0, y: 0.0, z: 1.8}}"
+ros2 service list
+ros2 service call /clear std_srvs/srv/Empty
+ros2 param list
+ros2 param get /turtlesim background_g
+ros2 param set /turtlesim background_r 150
