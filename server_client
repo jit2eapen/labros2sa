@@ -7,11 +7,11 @@ gedit client.cpp
 cd ..
 gedit  CMakelists.txt(add executable and install targets)
 cd  ~/jittu_ws
-Colcon build
-Source /opt/ros/jazzy/setup.bash
-Source install/setup.bash
+colcon build
+source /opt/ros/jazzy/setup.bash
+source install/setup.bash
 ros2 run third server
-Ros2 run third client 2 3
+ros2 run third client 2 3
 
 ===================================================================================================
 
@@ -21,9 +21,11 @@ cd src
 gedit server.py
 gedit client.py
 cd ..
-gedit  setup.py(add executable and install targets)
+gedit  setup.py(add entry points)
 cd  ~/jittu_ws
-Colcon build
-Source /opt/ros/jazzy/setup.bash
-Source install/setup.bash
+colcon build
+source /opt/ros/jazzy/setup.bash
+source install/setup.bash
 ros2 run fourth server
+ros2 run third client 5 8
+
