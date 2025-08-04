@@ -1,0 +1,15 @@
+cd src
+ros2 pkg create --build-type ament_cmake  third --dependencies rclcpp example_interfaces
+cd third
+cd src
+gedit server.cpp
+gedit client.cpp
+cd ..
+gedit  CMakelists.txt(add executable and install targets)
+cd  ~/jittu_ws
+Colcon build
+Source /opt/ros/jazzy/setup.bash
+Source install/setup.bash
+ros2 run third server
+Ros2 run third client 2 3
+
