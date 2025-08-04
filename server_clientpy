@@ -1,0 +1,9 @@
+
+entry_points={
+    'console_scripts': [
+        'service = fourth.server:main',
+        'client = fourth.client:main',
+    ],
+},
+
+
