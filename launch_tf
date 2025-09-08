@@ -47,7 +47,3 @@ def generate_launch_description():
             ]
         ),
     ])
-                {'target_frame': LaunchConfiguration('target_frame')}
-            ]
-        ),
-    ])
