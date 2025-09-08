@@ -1,0 +1,15 @@
+<depend>geometry_msgs</depend>
+<depend>python3-numpy</depend>
+<depend>tf2_ros_py</depend>
+<depend>turtlesim</depend>
+
+ADD TO PACKAGE .XML
+
+
+data_files=[
+    	('share/' + package_name, ['package.xml']),
+    	('share/' + package_name + '/launch', ['launch/first.launch.py']),
+    	('share/ament_index/resource_index/packages', ['resource/' + package_name]),
+    ],
+
+ADD TO SETUP.PY
