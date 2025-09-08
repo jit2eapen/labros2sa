@@ -13,3 +13,13 @@ data_files=[
     ],
 
 ADD TO SETUP.PY
+
+
+
+
+entry_points={
+	    'console_scripts': [
+		'broad = fourth.broadcastor:main',
+		'list = fourth.listener:main',
+		'mover = fourth.mov:main',
+        ],
