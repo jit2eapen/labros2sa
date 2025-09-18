@@ -1,3 +1,12 @@
+sudo apt update
+sudo apt install ros-jazzy-rviz2 \
+                 ros-jazzy-joint-state-publisher\
+                 ros-jazzy-robot-state-publisher \
+                 ros-jazzy-xacro
+
+
+
+
 from setuptools import setup
 
 package_name = 'my_robot_description'
@@ -25,6 +34,8 @@ setup(
 
 
 ADD to setup.py
+
+
 
 
  <depend>rviz2</depend>
