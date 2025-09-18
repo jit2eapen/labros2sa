@@ -1,0 +1,52 @@
+from setuptools import setup
+
+package_name = 'my_robot_description'
+
+setup(
+    name=package_name,
+    version='0.0.1',
+    packages=[],
+    data_files=[
+        ('share/ament_index/resource_index/packages',
+            ['resource/' + package_name]),
+        ('share/' + package_name, ['package.xml']),
+        ('share/' + package_name + '/launch', ['launch/display.launch.py']),
+        ('share/' + package_name + '/urdf', ['urdf/my_robot.urdf']),
+    ],
+    install_requires=['setuptools'],
+    zip_safe=True,
+    maintainer='Your Name',
+    maintainer_email='you@email.com',
+    description='My robot description package (URDF + RViz2)',
+    license='Apache-2.0',
+    tests_require=['pytest'],
+    entry_points={},
+)
+
+
+ADD to setup.py
+
+
+ <depend>rviz2</depend>
+  <depend>joint_state_publisher</depend>
+  <depend>robot_state_publisher</depend>
+
+ADD TO package.xml
+
+
+<?xml version="1.0"?>
+<robot name="myfirst">
+
+  <link name="base_link">
+    <visual>
+      <geometry>
+        <cylinder length="0.6" radius="0.2"/>
+      </geometry>
+      <material name="blue">
+        <color rgba="0.1 0.1 0.8 1.0"/>
+      </material>
+    </visual>
+  </link>
+
+</robot>
+
