@@ -1,0 +1,146 @@
+sudo apt update
+sudo apt install ros-jazzy-rviz2 \
+                 ros-jazzy-rclpy \
+                 ros-jazzy-visualization-msgs \
+                 ros-jazzy-geometry-msgs \
+                 ros-jazzy-interactive-markers
+
+****install
+
+<depend> visualization_msgs</depend> 
+<depend>geometry_msgs </depend>
+<depend>interactive_markers</depend>
+
+*** add to package.xml****
+
+import rclpy
+from rclpy.node import Node
+from visualization_msgs.msg import Marker
+
+class BasicShapes(Node):
+    def __init__(self):
+        super().__init__('basic_shapes')
+        self.publisher_ = self.create_publisher(Marker, 'visualization_marker', 10)
+        self.timer = self.create_timer(1.0, self.timer_callback)
+        self.shape_type = Marker.CUBE  # Change to SPHERE, ARROW, CYLINDER
+
+    def timer_callback(self):
+        marker = Marker()
+        marker.header.frame_id = "map"
+        marker.header.stamp = self.get_clock().now().to_msg()
+        marker.ns = "basic_shapes"
+        marker.id = 0
+        marker.type = self.shape_type
+        marker.action = Marker.ADD
+
+        marker.pose.orientation.w = 1.0
+        marker.scale.x = 1.0
+        marker.scale.y = 1.0
+        marker.scale.z = 1.0
+
+        marker.color.a = 1.0
+        marker.color.g = 1.0  # Green
+
+        self.publisher_.publish(marker)
+        self.get_logger().info("Publishing a marker")
+
+def main(args=None):
+    rclpy.init(args=args)
+    node = BasicShapes()
+    rclpy.spin(node)
+    node.destroy_node()
+    rclpy.shutdown()
+
+if __name__ == '__main__':
+    main()
+
+********marker******basic shapes
+
+
+import rclpy
+from rclpy.node import Node
+from visualization_msgs.msg import Marker
+from geometry_msgs.msg import Point
+
+class PointsAndLines(Node):
+    def __init__(self):
+        super().__init__('points_and_lines')
+        self.publisher_ = self.create_publisher(Marker, 'visualization_marker', 10)
+        self.timer = self.create_timer(1.0, self.timer_callback)
+
+    def timer_callback(self):
+        # Points
+        points_marker = Marker()
+        points_marker.header.frame_id = "map"
+        points_marker.header.stamp = self.get_clock().now().to_msg()
+        points_marker.ns = "points_and_lines"
+        points_marker.id = 1
+        points_marker.type = Marker.POINTS
+        points_marker.action = Marker.ADD
+        points_marker.pose.orientation.w = 1.0
+        points_marker.scale.x = 0.2
+        points_marker.scale.y = 0.2
+        points_marker.color.a = 1.0
+        points_marker.color.r = 1.0  # Red
+
+        for i in range(10):
+            p = Point()
+            p.x = float(i)
+            p.y = float(i)
+            p.z = 0.0
+            points_marker.points.append(p)
+
+        self.publisher_.publish(points_marker)
+
+        # Lines
+        line_marker = Marker()
+        line_marker.header.frame_id = "map"
+        line_marker.header.stamp = self.get_clock().now().to_msg()
+        line_marker.ns = "points_and_lines"
+        line_marker.id = 2
+        line_marker.type = Marker.LINE_STRIP
+        line_marker.action = Marker.ADD
+        line_marker.pose.orientation.w = 1.0
+        line_marker.scale.x = 0.1
+        line_marker.color.a = 1.0
+        line_marker.color.g = 1.0  # Green
+
+        for i in range(10):
+            p = Point()
+            p.x = float(i)
+            p.y = float(-i)
+            p.z = 0.0
+            line_marker.points.append(p)
+
+        self.publisher_.publish(line_marker)
+        self.get_logger().info("Publishing points and lines")
+
+def main(args=None):
+    rclpy.init(args=args)
+    node = PointsAndLines()
+    rclpy.spin(node)
+    node.destroy_node()
+    rclpy.shutdown()
+
+if __name__ == '__main__':
+    main()
+
+
+******points and lines****
+
+    data_files=[
+        ('share/ament_index/resource_index/packages',
+            ['resource/' + package_name]),
+        ('share/' + package_name, ['package.xml']),
+    ],
+
+
+    entry_points={
+        'console_scripts': [
+            'basic_shapes = my_marker_pkg.basic_shapes:main',
+            'points_and_lines = my_marker_pkg.points_and_lines:main',
+        ],
+    },
+
+****setup.py*****
+
