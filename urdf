@@ -1,8 +1,8 @@
 sudo apt update
-sudo apt install ros-jazzy-rviz2 \
-                 ros-jazzy-joint-state-publisher\
-                 ros-jazzy-robot-state-publisher \
-                 ros-jazzy-xacro
+sudo apt install ros-jazzy-rviz2 
+sudo apt install ros-jazzy-joint-state-publisher
+sudo apt install ros-jazzy-robot-state-publisher 
+sudo apt install ros-jazzy-xacro
 
 
 
