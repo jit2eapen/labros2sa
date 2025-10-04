@@ -8,11 +8,34 @@ source /opt/ros/jazzy/setup.bash
 sudo apt install -y ros-jazzy-rmw-cyclonedds-cpp
 sudo apt install -y python3-colcon-common-extensions
 sudo apt install -y python3-serial
+sudo apt install -y libfuse2
+sudo apt install -y unzip
 echo "source /opt/ros/jazzy/setup.bash" >> ~/.bashrc
+
 cd ~/Downloads
 wget https://downloads.arduino.cc/arduino-ide/arduino-ide_2.3.2_Linux_64bit.AppImage
 chmod +x arduino-ide_2.3.2_Linux_64bit.AppImage
 ./arduino-ide_2.3.2_Linux_64bit.AppImage
+
+             or
+
+cd ~/Downloads
+
+# Download Arduino IDE
+wget https://downloads.arduino.cc/arduino-ide/arduino-ide_2.3.3_Linux_64bit.zip
+
+# Unzip
+unzip arduino-ide_2.3.3_Linux_64bit.zip
+
+# Move to /opt
+sudo mv arduino-ide_2.3.3_Linux_64bit /opt/arduino-ide
+
+# Fix sandbox permissions
+sudo chown root:root /opt/arduino-ide/chrome-sandbox
+sudo chmod 4755 /opt/arduino-ide/chrome-sandbox
+
+# Create link (ignore if exists)
+sudo ln -sf /opt/arduino-ide/arduino-ide /usr/local/bin/arduino-ide
 
 
 
