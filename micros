@@ -140,7 +140,19 @@ if __name__ == '__main__':
     main()
 
 
+entry_points={
+    'console_scripts': [
+        'chatter = second.sub:main',
+    ],
+},
 
+cd ~/microros_ws
+colcon build 
+source install/setup.bash
+source /opt/ros/jazzy/setup.bash
+source ~/microros_ws/install/setup.bash
+unset RMW_IMPLEMENTATION
+ros2 run second chatter
 
 
 
