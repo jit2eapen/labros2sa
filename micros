@@ -1,0 +1,59 @@
+sudo usermod -a -G dialout $USER
+sudo usermod -a -G tty $USER
+sudo apt remove brltty -y
+sudo reboot
+ls /dev/ttyUSB* /dev/ttyACM*
+sudo apt update
+source /opt/ros/jazzy/setup.bash
+sudo apt install -y ros-jazzy-rmw-cyclonedds-cpp
+sudo apt install -y python3-colcon-common-extensions
+sudo apt install -y python3-serial
+echo "source /opt/ros/jazzy/setup.bash" >> ~/.bashrc
+cd ~/Downloads
+wget https://downloads.arduino.cc/arduino-ide/arduino-ide_2.3.2_Linux_64bit.AppImage
+chmod +x arduino-ide_2.3.2_Linux_64bit.AppImage
+./arduino-ide_2.3.2_Linux_64bit.AppImage
+
+
+
+micro_ros_arduino
+https://raw.githubusercontent.com/espressif/arduino-esp32/gh-pages/package_esp32_index.json
+ 115200
+ /dev/ttyACM0 (or /dev/ttyUSB0)
+ESP32
+
+
+
+
+
+mkdir -p ~/rmicroros_ws/src
+cd ~/microros_ws/src
+git clone -b jazzy https://github.com/micro-ROS/micro_ros_setup.git
+git clone -b jazzy https://github.com/micro-ROS/micro-ros-agent.git
+
+cd ~/microros_ws
+colcon build
+source install/setup.bash
+echo "source ~/microros_ws/install/setup.bash" >> ~/.bashrc
+
+
+
+
+
+source /opt/ros/jazzy/setup.bash
+source ~/microros_ws/install/setup.bash
+unset RMW_IMPLEMENTATION
+unset ROS_DOMAIN_ID
+ros2 run micro_ros_agent micro_ros_agent serial --dev /dev/ttyACM0 -b 115200
+
+
+
+
+source /opt/ros/jazzy/setup.bash
+unset RMW_IMPLEMENTATION
+unset ROS_DOMAIN_ID
+ros2 topic list
+ros2 topic echo /esp32_chatter
+
+
+
