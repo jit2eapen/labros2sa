@@ -77,7 +77,7 @@ source /opt/ros/jazzy/setup.bash
 unset RMW_IMPLEMENTATION
 unset ROS_DOMAIN_ID
 ros2 topic list
-ros2 topic echo /esp32_chatter
+ros2 topic echo /chatter
 
 
 
