@@ -20,30 +20,29 @@ chmod +x arduino-ide_2.3.2_Linux_64bit.AppImage
              or
 
 cd ~/Downloads
-
 # Download Arduino IDE
 wget https://downloads.arduino.cc/arduino-ide/arduino-ide_2.3.3_Linux_64bit.zip
-
 # Unzip
 unzip arduino-ide_2.3.3_Linux_64bit.zip
-
 # Move to /opt
 sudo mv arduino-ide_2.3.3_Linux_64bit /opt/arduino-ide
-
 # Fix sandbox permissions
 sudo chown root:root /opt/arduino-ide/chrome-sandbox
 sudo chmod 4755 /opt/arduino-ide/chrome-sandbox
-
 # Create link (ignore if exists)
 sudo ln -sf /opt/arduino-ide/arduino-ide /usr/local/bin/arduino-ide
 
+#in terminal type
+arduino-ide
 
 
-micro_ros_arduino
+
 https://raw.githubusercontent.com/espressif/arduino-esp32/gh-pages/package_esp32_index.json
+ESP32
+micro_ros_arduino
  115200
  /dev/ttyACM0 (or /dev/ttyUSB0)
-ESP32
+ESP32 dev module
 
 
 
@@ -53,9 +52,9 @@ mkdir -p ~/microros_ws/src
 cd ~/microros_ws/src
 git clone -b jazzy https://github.com/micro-ROS/micro_ros_setup.git
 git clone -b jazzy https://github.com/micro-ROS/micro-ros-agent.git
-
 cd ~/microros_ws
 colcon build
+#if error do 58 and redo colcon build
 git clone -b jazzy https://github.com/micro-ROS/micro_ros_msgs.git
 source install/setup.bash
 echo "source ~/microros_ws/install/setup.bash" >> ~/.bashrc
