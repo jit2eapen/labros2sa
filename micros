@@ -49,7 +49,7 @@ ESP32
 
 
 
-mkdir -p ~/rmicroros_ws/src
+mkdir -p ~/microros_ws/src
 cd ~/microros_ws/src
 git clone -b jazzy https://github.com/micro-ROS/micro_ros_setup.git
 git clone -b jazzy https://github.com/micro-ROS/micro-ros-agent.git
