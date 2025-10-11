@@ -2,7 +2,7 @@ sudo usermod -a -G dialout $USER
 sudo usermod -a -G tty $USER
 sudo apt remove brltty -y
 sudo reboot
-ls /dev/ttyUSB* /dev/ttyACM*
+ls /dev/ttyUSB* /dev/ttyACM*        ####shows error
 sudo apt update
 source /opt/ros/jazzy/setup.bash
 sudo apt install -y ros-jazzy-rmw-cyclonedds-cpp
@@ -36,17 +36,20 @@ sudo ln -sf /opt/arduino-ide/arduino-ide /usr/local/bin/arduino-ide
 arduino-ide
 
 
-
+#in files->preferences->additional board manager    paste
 https://raw.githubusercontent.com/espressif/arduino-esp32/gh-pages/package_esp32_index.json
-ESP32
-micro_ros_arduino
- 115200
- /dev/ttyACM0 (or /dev/ttyUSB0)
-ESP32 dev module
+#in tools->board manger    type
+ESP32  and select esp32 by expressif    #install
+#in sketch->mange libraries    type
+micro_ros_arduino  and select micro_ros_arduino ny microros  #install
+tool->upload speed  115200
+#in borad manager select
+port -> /dev/ttyACM0 (or /dev/ttyUSB0)
+board -> ESP32 dev module
 
 
 
-
+#open new terminal
 
 mkdir -p ~/microros_ws/src
 cd ~/microros_ws/src
@@ -84,6 +87,8 @@ cd ~/microros_ws/src
 ros2 pkg create --build-type ament_python second
 cd second/second
 gedit sub.py
+
+**** code for subcriber***8
 
 #!/usr/bin/env python3
 import rclpy
